@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "2b295fbe-5a2c-4321-8b6d-b57a35ec7adb",
+		"name": "heliosx-consultation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33825806"
+	},
+	"item": [
+		{
+			"name": "GET questions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/consultation/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"consultation",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST submit answers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"answers\": {\n        \"sneezes\": \"yes\",\n        \"allergicReactionToMedication\": \"no\",\n        \"pregnantOrBreastFeeding\": \"no\",\n        \"hadNasalSurgery\": \"no\",\n        \"conflictingDiagnosis\": \"no\",\n        \"takingCurrentMedication\": \"no\",\n        \"prescriptionAgreement\": \"yes\",\n        \"everydayUseAgreement\": \"yes\",\n        \"fourWeekGpAgreement\": \"yes\",\n        \"threeMonthLimitAgreement\": \"yes\",\n        \"sideEffectAgreement\": \"yes\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/consultation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"consultation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST new consultation question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\":\"Health\",\n    \"question\":\"Have you experienced any migraines in the last two weeks?\",\n    \"answerForPrescription\":\"no\",\n    \"variableName\":\"recentMigraines\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/consultation/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"consultation",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

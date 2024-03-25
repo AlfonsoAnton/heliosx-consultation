@@ -1,0 +1,158 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/consultation": {
+      "post": {
+        "tags": [
+          "consultation-controller"
+        ],
+        "operationId": "submitConsultationQuestions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultationSubmissionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultationResultResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/consultation/questions": {
+      "get": {
+        "tags": [
+          "consultation-controller"
+        ],
+        "operationId": "getConsultationQuestions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultationQuestionsResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "consultation-controller"
+        ],
+        "operationId": "createNewConsultationQuestion",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultationQuestionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultationQuestionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ConsultationSubmissionRequest": {
+        "type": "object",
+        "properties": {
+          "answers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ConsultationResultResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ConsultationQuestionRequest": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "answerForPrescription": {
+            "type": "string"
+          },
+          "variableName": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsultationQuestionResponse": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "variableName": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsultationQuestionsResponse": {
+        "type": "object",
+        "properties": {
+          "questionResponseList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsultationQuestionResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}
