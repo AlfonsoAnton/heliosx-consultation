@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heliosx-app
+  template:
+    metadata:
+      labels:
+        app: heliosx-app
+    spec:
+      containers:
+        - name: app
+          image: heliosx:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Never
